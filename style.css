@@ -33,6 +33,8 @@ body *{
 
 header{
     margin-bottom: 63px;
+    display: flex;
+    justify-content: center;
 }
 
 .card{
