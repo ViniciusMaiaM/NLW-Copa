@@ -22,6 +22,7 @@ function create_card(date,day,games){
 document.querySelector('#app').innerHTML = ` 
     <header>
         <img src="./assets/logo.svg" alt="Logo NLW">
+        <img src="./assets/copa.svg" alt="Logo Copa Catar">
     </header>
     <main id="cards">
         ${create_card("24/11", "quinta", 
