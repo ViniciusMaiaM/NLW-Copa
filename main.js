@@ -8,9 +8,12 @@ function create_game(player1,hour,player2){
 `
 }
 
+let delay = -0.4;  
+
 function create_card(date,day,games){
+    delay += 0.4;
     return `
-    <div class="card"> <!--Espaço onde ficarão os cartões de jogos-->
+    <div class="card" style="animation-delay: ${delay}s"> <!--Espaço onde ficarão os cartões de jogos-->
     <h2>${date} <span>${day}</span> </h2>
         <ul> <!--Ul é para uma lista não ordernada, li para os seu itens-->
             ${games}
@@ -19,19 +22,15 @@ function create_card(date,day,games){
 `
 }
 
-document.querySelector('#app').innerHTML = ` 
-    <header>
-        <img src="./assets/logo.svg" alt="Logo NLW">
-        <img src="./assets/copa.svg" alt="Logo Copa Catar">
-    </header>
-    <main id="cards">
-        ${create_card("24/11", "quinta", 
-        create_game("suica","07:00","cameroon") + 
-        create_game("portugal","13:00","gana") +
-        create_game("brazil","16:00","serbia"))}
-        ${create_card("28/11", "segunda", 
-        create_game("korea","10:00","gana") +
-        create_game("brazil","13:00","suica") +
-        create_game("portugal","16:00","uruguai"))}
-    </main>
-`
+document.querySelector('#cards').innerHTML = 
+
+        create_card("24/11", "quinta", 
+            create_game("suica","07:00","cameroon") + 
+            create_game("portugal","13:00","gana") +
+            create_game("brazil","16:00","serbia")
+        ) +
+
+        create_card("28/11", "segunda", 
+            create_game("korea","10:00","gana") +
+            create_game("brazil","13:00","suica") +
+            create_game("portugal","16:00","uruguai"))
