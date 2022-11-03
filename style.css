@@ -8,15 +8,42 @@ de todos os elementos*/
     não conta o padding que for adicionado*/
 }
 
+:root{ /*seleciona a raiz do html*/
+    --card-title-border-color: #746615;
+    --card-color-primary: #f7dd43;
+    --card-bg-color: #1d1c19;
+    --bg: url(./assets/bg-yellow.svg)
+}
+
+body.blue{
+    --card-title-border-color: #338AF3;
+    --card-color-primary: #338AF3;
+    --card-bg-color: #202024;
+    --bg: url(./assets/bg-blue.svg)
+}
+
+/*Caso a classe blue seja adicionada no body as cores do titulo e da borda vão mudar para azul*/
+
+body.green{
+    --card-title-border-color: #047c3f;
+    --card-color-primary: #047c3f;
+    --card-bg-color: #1a1f1b;
+    --bg: url(./assets/bg-green.svg)
+}
+
 ul{
     list-style: none;
 }
 
 body{ /*Seletor, declaração, valor*/
-    background-color: #121214;
-    background-image: url(./assets/bg.svg);
+    /* background-color: #121214;
+    background-image: var(--bg);
+    background-position-y: top;
     background-position-x: center;
-    background-position-y: -715px;
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+    background: #121214 var(--bg) no-repeat top center/cover;
 }
 
 body *{ 
@@ -26,9 +53,10 @@ body *{
 #app{
     width: fit-content; /*Dessa maneira o
     conteudo se alinha*/
-    margin: 52px auto; /*São colocados doi valores
+    margin: auto; /*São colocados doi valores
     um para a parte de cima/baixo e outro 
     para as laterais*/
+    padding-top: 52px;
 }
 
 header{
@@ -38,17 +66,17 @@ header{
 
 #cards{ /* # para id e . para classe*/
     display: flex;
-    /* flex-direction: column; */
+    /* align-items: center; */
+    flex-direction: column; 
     gap: 32px;
 }
 
 .card{
     padding: 32px 23px;
     text-align: center;
-
-    background: #1d1c19;
-    border-bottom: 2px solid #f7dd43;
-    border-radius: 6px;
+    background: var(--card-bg-color);
+    border-bottom: 2px solid var(--card-color-primary); /*chamada da variavel declarada*/
+    border-radius: 6px; 
 }
 
 .card h2{
@@ -59,7 +87,7 @@ header{
     align-items: center;
     
     padding: 8px 16px;
-    border: 1px solid #746615;
+    border: 1px solid var(--card-title-border-color);
     border-radius: 6px;
 
     width: fit-content; 
@@ -68,7 +96,7 @@ header{
     sua margem e largura*/
     margin-bottom: 53px;
 
-    color: #F7dd43;
+    color: #f7dd43;
 }
 
 .card h2 span{
@@ -102,3 +130,56 @@ li anterior a ele*/
     line-height: 125%;
     color: #E1E1E6;
 }
+
+/*A virgula agrupa dois seletores para receber as mesmas coisas*/
+/*Hover quer dizer que vai ser interpretado quando o mouse for passado por cima*/
+.card h2:hover,
+.card ul li strong:hover, 
+.card ul li img:hover{
+    transform: scale(1.1);
+}
+
+.card h2,
+.card ul li strong,
+.card il li img{
+    transition: transform 0.3s; 
+}
+
+.card{
+    opacity: 0;
+    animation: appear 0.2s forwards; /*Aqui chamamos o appear criado abaixo, onde o elemento demora 2 segundos
+    para aparecer*/
+}
+
+
+/* .card:nth-child(1){
+    animation-delay: .2s;
+} */
+/*Assim pode se selecionar alguma das classe filho para alterarmos*/
+
+
+@keyframes appear {
+    0% {
+        transform: translatey(-50px); /*Altera o posicionamento de todo elemento no eixo y*/
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/*Com o keyframe podemos adicionar animações
+e declaramos que de 0 a 100 a opacidade irá aumentar*/
+
+/*Se a largura minima da tela for de 700 pra cima as regras 
+serão aplicadas*/
+
+@media(min-width: 700px){ 
+    #cards{ /*Aqui especificamos qual ponto queremos mudar*/
+        max-width: 670px; /*Tamanho máximo da caixa*/
+        flex-direction: row;
+        flex-wrap: wrap; /*Ajustando a maneira que as caixas são 
+        alinhadas*/
+    }
+}
+/*Com o media pode se adaptar o layout da pagina de acordo com a o browser
+ou a necessidade*/
