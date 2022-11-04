@@ -1,10 +1,10 @@
 <h1 align='center'>NLW-Copa</h1>
 
-<p align="center">
+<div align="center">
 
 Created during the event promoted by rocketseat
 
-</p>
+</div>
 
 
 ## 🚀 Technologies:
